@@ -1,56 +1,14 @@
-import { Toaster, toast } from "react-hot-toast";
-import { BiLike, BiDislike } from "react-icons/bi";
+import Link from "next/link";
 
-const Home = ({ post }) => {
-  const likeClickHandler = () => {
-    toast.success("Liked!", {
-      icon: <BiLike />,
-      style: {
-        border: "1px solid #713200",
-        // padding: "16px",
-        color: "green",
-      },
-    });
-  };
-
-  const unLikeClickHandler = () => {
-    toast.success("Unliked!", {
-      icon: <BiDislike />,
-      style: {
-        border: "1px solid #713200",
-        // padding: "16px",
-        color: "red",
-      },
-    });
-  };
-
+function Home() {
   return (
-    <div style={{ padding: "20px" }}>
-      <Toaster />
-      <h1>Blog Posts</h1>
-      <hr />
-      <div key={post.id.N}>
-        <h1>{post.title.S}</h1>
-        <p>{post.content.S}</p>
-        <span><BiLike style={{ color: "blue", cursor: "pointer" }} onClick={likeClickHandler} /> <BiDislike style={{ color: "red", cursor: "pointer" }} onClick={unLikeClickHandler} /></span>
+    <>
+      <div style={{ textAlign: "center", marginTop: "20%" }}>
+        <h3>{process.env.NODE_ENV}</h3>
+        <Link href="/blogs"><button style={{ padding: "20px", fontSize: "1.5em", cursor: "pointer" }}><strong>Blogs</strong></button></Link>
       </div>
-      <hr />
-    </div>
+    </>
   );
-};
-
-export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.DEV_URL}/api/posts/2`);
-  console.log("Res: ", res);
-  const post = await res.json();
-  console.log("Post Res: ", post);
-
-  return {
-    props: {
-      post
-    },
-    revalidate: 10
-  };
-};
+}
 
 export default Home;
