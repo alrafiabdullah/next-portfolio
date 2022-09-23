@@ -40,7 +40,7 @@ const Home = ({ post }) => {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/posts/2');
+  const res = await fetch(`${process.env.DEV_URL}/api/posts/2`);
   console.log("Res: ", res);
   const post = await res.json();
   console.log("Post Res: ", post);
