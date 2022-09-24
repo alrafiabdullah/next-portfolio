@@ -1,10 +1,7 @@
 import Head from "next/head";
-import axios from "axios";
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  // axios.defaults.baseURL = process.env.NODE_ENV === "production" ? process.env.PROD_URL : process.env.LOCAL_URL;
-
   return <>
     <Head>
       <meta charSet="UTF-8" />

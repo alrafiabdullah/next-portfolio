@@ -1,11 +1,10 @@
+import Link from "next/link";
 import { useState } from "react";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { HashLoader } from "react-spinners";
-import axios from "axios";
-import Link from "next/link";
 
-const BlogPosts = ({ postArr }) => {
+const BlogPosts = ({ posts }) => {
     const [loading, setLoading] = useState(false);
 
     const likeClickHandler = (title) => {
@@ -47,7 +46,7 @@ const BlogPosts = ({ postArr }) => {
                 <HashLoader loading={loading} color="red" />
             </div>
             <hr />
-            {postArr.map((post, index) =>
+            {posts.map((post, index) =>
                 <div key={index}>
                     <h1 key={post.id.N}></h1>
                     <Link href={`/blogs/${post.id.N}`}>
@@ -63,13 +62,18 @@ const BlogPosts = ({ postArr }) => {
 };
 
 export const getStaticProps = async () => {
-    const postArr = await axios.get(`${process.env.PROD_URL}/api/posts`);
+    // let url = process.env.PROD_URL;
+    // if (process.env.NODE_ENV !== "production") {
+    //     url = process.env.LOCAL_URL;
+    // }
+
+    const res = await fetch(`https://next-portfolio-lsg4.vercel.app/api/posts`);
+    const posts = await res.json();
 
     return {
         props: {
-            postArr: postArr.data
+            posts,
         },
-        revalidate: 10
     };
 };
 

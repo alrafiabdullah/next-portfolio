@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function Home() {
+const Home = () => {
   return (
     <>
       <div style={{ textAlign: "center", marginTop: "20%" }}>
@@ -9,6 +9,7 @@ function Home() {
       </div>
     </>
   );
-}
+};
+
 
 export default Home;

@@ -1,7 +1,6 @@
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 import { HashLoader } from "react-spinners";
-import axios from "axios";
 
 const BlogPost = ({ post }) => {
     const [loading, setLoading] = useState(false);
@@ -27,25 +26,36 @@ const BlogPost = ({ post }) => {
 };
 
 export const getStaticProps = async (context) => {
-    const { blogID } = context.params;
+    const { postid } = context.params;
 
-    const res = await axios.get(`${process.env.PROD_URL}/api/posts/${blogID}`);
-    const post = await res.data;
+    // let url = process.env.PROD_URL;
+    // if (process.env.NODE_ENV !== "production") {
+    //     url = process.env.LOCAL_URL;
+    // }
+
+    const res = await fetch(`https://next-portfolio-lsg4.vercel.app/api/posts/${postid}`);
+    const post = await res.json();
 
     return {
         props: {
             post,
         },
+
         revalidate: 10,
     };
 };
 
 export const getStaticPaths = async () => {
-    const res = await axios.get(`${process.env.PROD_URL}/api/posts`);
-    const posts = await res.data;
+    // let url = process.env.PROD_URL;
+    // if (process.env.NODE_ENV !== "production") {
+    //     url = process.env.LOCAL_URL;
+    // }
+
+    const res = await fetch(`https://next-portfolio-lsg4.vercel.app/api/posts`);
+    const posts = await res.json();
 
     const paths = posts.map((post) => ({
-        params: { blogID: post.id.N },
+        params: { postid: post.id.N },
     }));
 
     return {
@@ -54,5 +64,5 @@ export const getStaticPaths = async () => {
     };
 };
 
-export default BlogPost;
 
+export default BlogPost;
