@@ -29,8 +29,8 @@ export const getStaticProps = async (context) => {
     console.log(context);
     const { postid } = context.params;
 
-    let url = "http://localhost:3000";
-    if (process.env.NODE_ENV !== "production") {
+    let url = "http://127.0.0.1:3000";
+    if (process.env.NODE_ENV === "production") {
         url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
     }
 
@@ -47,8 +47,8 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-    let url = "http://localhost:3000";
-    if (process.env.NODE_ENV !== "production") {
+    let url = "http://127.0.0.1:3000";
+    if (process.env.NODE_ENV === "production") {
         url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
     }
 
