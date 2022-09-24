@@ -26,14 +26,15 @@ const BlogPost = ({ post }) => {
 };
 
 export const getStaticProps = async (context) => {
+    console.log(context);
     const { postid } = context.params;
 
-    // let url = process.env.PROD_URL;
-    // if (process.env.NODE_ENV !== "production") {
-    //     url = process.env.LOCAL_URL;
-    // }
+    let url = "http://localhost:3000";
+    if (process.env.NODE_ENV !== "production") {
+        url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
+    }
 
-    const res = await fetch(`https://next-portfolio-lsg4.vercel.app/api/posts/${postid}`);
+    const res = await fetch(`${url}/api/posts/${postid}`);
     const post = await res.json();
 
     return {
@@ -46,12 +47,12 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-    // let url = process.env.PROD_URL;
-    // if (process.env.NODE_ENV !== "production") {
-    //     url = process.env.LOCAL_URL;
-    // }
+    let url = "http://localhost:3000";
+    if (process.env.NODE_ENV !== "production") {
+        url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
+    }
 
-    const res = await fetch(`https://next-portfolio-lsg4.vercel.app/api/posts`);
+    const res = await fetch(`${url}/api/posts`);
     const posts = await res.json();
 
     const paths = posts.map((post) => ({

@@ -1,11 +1,19 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { HashLoader } from "react-spinners";
 
 const BlogPosts = ({ posts }) => {
     const [loading, setLoading] = useState(false);
+    const [hostName, setHostName] = useState("");
+    //get current hostname
+    useEffect(() => {
+        const domain = window.location.hostname;
+        console.log(domain);
+        setHostName(domain);
+    }, []);
+
 
     const likeClickHandler = (title) => {
         toast.success(`You liked ${title}`, {
@@ -62,12 +70,13 @@ const BlogPosts = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
-    // let url = process.env.PROD_URL;
-    // if (process.env.NODE_ENV !== "production") {
-    //     url = process.env.LOCAL_URL;
-    // }
+    let url = "http://localhost:3000";
+    if (process.env.NODE_ENV !== "production") {
+        url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
+    }
 
-    const res = await fetch(`https://next-portfolio-lsg4.vercel.app/api/posts`);
+
+    const res = await fetch(`${url}/api/posts`);
     const posts = await res.json();
 
     return {
