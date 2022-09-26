@@ -63,7 +63,7 @@ const BlogPosts = ({ posts }) => {
 export const getStaticProps = async () => {
     let url = process.env.NEXT_PUBLIC_LOCAL_URL;
     if (process.env.NODE_ENV === "production") {
-        url = "https://" + process.env.VERCEL_URL;
+        url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
     }
 
     const res = await fetch(`${url}/api/posts`);
