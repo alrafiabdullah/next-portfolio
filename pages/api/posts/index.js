@@ -5,11 +5,16 @@ import { database } from "../../../db";
 const handler = async (req, res) => {
     // retrieve all posts from firebase
     const postInstance = collection(database, "posts");
+
     const postSnapshot = await getDocs(postInstance)
         .then((querySnapshot) => {
             const posts = [];
             querySnapshot.forEach((doc) => {
-                posts.push(doc.data());
+                let postObj = {
+                    "id": doc.id,
+                    "data": doc.data()
+                };
+                posts.push(postObj);
             });
             return posts;
         })
