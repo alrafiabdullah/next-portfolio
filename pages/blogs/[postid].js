@@ -26,15 +26,9 @@ const BlogPost = ({ post }) => {
 };
 
 export const getStaticProps = async (context) => {
-    console.log(context);
     const { postid } = context.params;
 
-    let url = "http://127.0.0.1:3000";
-    if (process.env.NODE_ENV === "production") {
-        url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
-    }
-
-    const res = await fetch(`${url}/api/posts/${postid}`);
+    const res = await fetch(`http://localhost:4000/post/${postid}`);
     const post = await res.json();
 
     return {
@@ -47,12 +41,7 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-    let url = "http://127.0.0.1:3000";
-    if (process.env.NODE_ENV === "production") {
-        url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
-    }
-
-    const res = await fetch(`${url}/api/posts`);
+    const res = await fetch(`http://localhost:4000/post`);
     const posts = await res.json();
 
     const paths = posts.map((post) => ({
