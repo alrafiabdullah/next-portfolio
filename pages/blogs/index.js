@@ -49,10 +49,10 @@ const BlogPosts = ({ posts }) => {
             {posts.map((post, index) =>
                 <div key={index}>
                     <Link href={`/blogs/${post.id}`}>
-                        <h1 style={{ cursor: "pointer" }} onClick={titleClickHandler}>{post.title}</h1>
+                        <h1 style={{ cursor: "pointer" }} onClick={titleClickHandler}>{post.data.title}</h1>
                     </Link>
-                    <p>{post.content}</p>
-                    <span><BiLike style={{ color: "blue", cursor: "pointer" }} onClick={() => likeClickHandler(post.title.S)} /> <BiDislike style={{ color: "red", cursor: "pointer" }} onClick={() => unLikeClickHandler(post.title.S)} /></span>
+                    <p>{post.data.content}</p>
+                    <span><BiLike style={{ color: "blue", cursor: "pointer" }} onClick={() => likeClickHandler(post.data.title)} /> <BiDislike style={{ color: "red", cursor: "pointer" }} onClick={() => unLikeClickHandler(post.data.title)} /></span>
                     <hr />
                 </div>
             )}
