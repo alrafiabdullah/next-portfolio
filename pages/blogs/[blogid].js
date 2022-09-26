@@ -30,7 +30,7 @@ export const getStaticProps = async (context) => {
 
     let url = process.env.NEXT_PUBLIC_LOCAL_URL;
     if (process.env.NODE_ENV === "production") {
-        url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
+        url = process.env.NEXT_PUBLIC_PROD_URL;
     }
 
     const res = await fetch(`${url}/api/posts/${blogid}`);
@@ -48,7 +48,7 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
     let url = process.env.NEXT_PUBLIC_LOCAL_URL;
     if (process.env.NODE_ENV === "production") {
-        url = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
+        url = process.env.NEXT_PUBLIC_PROD_URL;
     }
 
     console.log(url);
