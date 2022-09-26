@@ -22,15 +22,17 @@ const handler = async (req, res) => {
         })
         .catch((error) => {
             console.log("Error getting documents: ", error);
+            return null;
         });
 
-    postSnapshot.forEach((post) => {
-        if (post.id === id) {
-            res.status(200).json(post);
-        }
-    });
+    const post = postSnapshot.filter((post) => post.id === id)[0];
 
-    res.status(404).json({ message: "Post not found" });
+    if (post === undefined) {
+        res.status(404).json({ message: "No post found" });
+    } else {
+        res.status(200).json(post);
+    }
+
 };
 
 export default handler;
