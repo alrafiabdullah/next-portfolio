@@ -1,9 +1,6 @@
 import Link from "next/link";
 
-import { app } from "../db";
-
 const Home = () => {
-  console.log(app);
   return (
     <>
       <div style={{ textAlign: "center", marginTop: "20%" }}>
