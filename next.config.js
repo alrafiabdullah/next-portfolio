@@ -17,7 +17,7 @@ const nextConfig = {
           },
           {
             key: "X-Developed-Using",
-            value: "Next.js DynamoDB and Vercel",
+            value: "Next.js Firebase and Vercel",
           },
           {
             key: "X-Developed-At",
