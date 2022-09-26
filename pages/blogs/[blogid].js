@@ -51,12 +51,19 @@ export const getStaticPaths = async () => {
         url = process.env.NEXT_PUBLIC_PROD_URL;
     }
 
+    console.log(url);
+    console.log(process.env.NODE_ENV);
+
     const res = await fetch(`${url}/api/posts`);
     const posts = await res.json();
+
+    console.log(posts);
 
     const paths = posts.map((post) => ({
         params: { blogid: post.id },
     }));
+
+    console.log(paths);
 
     return {
         paths,
