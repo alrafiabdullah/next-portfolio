@@ -2,6 +2,11 @@
   "name": "trial",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Abdullah Al Rafi",
+    "email": "abdullah@abdullahalrafi.com",
+    "url": "https://www.abdullahalrafi.com.bd"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
