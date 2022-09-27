@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import { useState } from "react";
 import { HashLoader } from "react-spinners";
 
@@ -11,6 +12,9 @@ const BlogPost = ({ post }) => {
 
     return (
         <div style={{ textAlign: "center" }}>
+            <Head>
+                <title>{post.data.title}</title>
+            </Head>
             <h1>Blog Title: {post.data.title}</h1>
             <p style={{ border: "1px solid black", padding: "20px", marginRight: "100px", marginLeft: "100px" }}>{post.data.content}</p>
             <div style={{
@@ -28,12 +32,15 @@ const BlogPost = ({ post }) => {
 export const getStaticProps = async (context) => {
     const { blogid } = context.params;
 
+    // split string by - and take the last item
+    const id = blogid.split("-").pop();
+
     let url = process.env.NEXT_PUBLIC_LOCAL_URL;
     if (process.env.NODE_ENV === "production") {
         url = process.env.NEXT_PUBLIC_PROD_URL;
     }
 
-    const res = await fetch(`${url}/api/posts/${blogid}`);
+    const res = await fetch(`${url}/api/posts/${id}`);
     const post = await res.json();
 
     return {
@@ -60,7 +67,7 @@ export const getStaticPaths = async () => {
     console.log(posts);
 
     const paths = posts.map((post) => ({
-        params: { blogid: post.id },
+        params: { blogid: `${post.data.slug}-${post.id}` },
     }));
 
     console.log(paths);

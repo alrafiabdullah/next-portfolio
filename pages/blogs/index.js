@@ -48,7 +48,7 @@ const BlogPosts = ({ posts }) => {
             <hr />
             {posts.map((post, index) =>
                 <div key={index}>
-                    <Link href={`/blogs/${post.id}`}>
+                    <Link href={`/blogs/${post.data.slug}-${post.id}`}>
                         <h1 style={{ cursor: "pointer" }} onClick={titleClickHandler}>{post.data.title}</h1>
                     </Link>
                     <p>{post.data.content}</p>
