@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  env: {
-    NODE_ENV: "production",
-  },
   async headers() {
     return [
       {
