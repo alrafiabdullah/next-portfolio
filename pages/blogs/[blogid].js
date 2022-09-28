@@ -13,7 +13,7 @@ const BlogPost = ({ post }) => {
     return (
         <div style={{ textAlign: "center" }}>
             <Head>
-                <title>{post.data.title}</title>
+                <title>{post.data.title} | Abdullah Al Rafi</title>
             </Head>
             <h1>Blog Title: {post.data.title}</h1>
             <p style={{ border: "1px solid black", padding: "20px", marginRight: "100px", marginLeft: "100px" }}>{post.data.content}</p>
