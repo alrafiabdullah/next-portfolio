@@ -2,7 +2,9 @@
 
 ##
 
-> NextJS, Firebase & Vercel
+> NextJS, Express & Firebase
+
+> [![Vercel](https://img.shields.io/badge/Vercel-Deployed-green?labelColor=gray&style=social&logo=vercel&link=https://www.abdullahalrafi.com.bd)](https://www.abdullahalrafi.com.bd)
 
 ##
 

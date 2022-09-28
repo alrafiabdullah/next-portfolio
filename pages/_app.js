@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
       <meta name="creator" content="Abdullah Al Rafi" />
       <meta name="publisher" content="Abdullah Al Rafi" />
       <meta name="description" content="Portfolio website of Abdullah Al Rafi, Python & JS Developer, Junior Data Scientist at MedAI" />
-      <title>Abdullah Al Rafi</title>
+      <title>{pageProps.title && `${pageProps.title} | `}Abdullah Al Rafi</title>
     </Head>
     <Component {...pageProps} />
   </>;

@@ -12,9 +12,6 @@ const BlogPost = ({ post }) => {
 
     return (
         <div style={{ textAlign: "center" }}>
-            <Head>
-                <title>{post.data.title}</title>
-            </Head>
             <h1>Blog Title: {post.data.title}</h1>
             <p style={{ border: "1px solid black", padding: "20px", marginRight: "100px", marginLeft: "100px" }}>{post.data.content}</p>
             <div style={{
@@ -45,7 +42,8 @@ export const getStaticProps = async (context) => {
 
     return {
         props: {
-            post,
+            post: post,
+            title: post.data.title,
         },
 
         revalidate: 10,
