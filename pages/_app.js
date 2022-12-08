@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import Head from "next/head";
 import '../styles/globals.css';
 
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       <title>{pageProps.title && `${pageProps.title} | `}Abdullah Al Rafi</title>
     </Head>
     <Component {...pageProps} />
+    <Analytics />
   </>;
 }
 
