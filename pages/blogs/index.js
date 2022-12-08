@@ -48,11 +48,11 @@ const BlogPosts = ({ posts }) => {
             <hr />
             {posts.map((post, index) =>
                 <div key={index}>
-                    <Link href={`/blogs/${post.data.slug}-${post.id}`}>
-                        <h1 style={{ cursor: "pointer" }} onClick={titleClickHandler}>{post.data.title}</h1>
+                    <Link href={`/blogs/${post.slug}-${post.id}`}>
+                        <h1 style={{ cursor: "pointer" }} onClick={titleClickHandler}>{post.title}</h1>
                     </Link>
-                    <p>{post.data.content}</p>
-                    <span><BiLike style={{ color: "blue", cursor: "pointer" }} onClick={() => likeClickHandler(post.data.title)} /> <BiDislike style={{ color: "red", cursor: "pointer" }} onClick={() => unLikeClickHandler(post.data.title)} /></span>
+                    <p>{post.body}</p>
+                    <span><BiLike style={{ color: "blue", cursor: "pointer" }} onClick={() => likeClickHandler(post.title)} /> <BiDislike style={{ color: "red", cursor: "pointer" }} onClick={() => unLikeClickHandler(post.title)} /></span>
                     <hr />
                 </div>
             )}
@@ -66,7 +66,7 @@ export const getStaticProps = async () => {
         url = process.env.NEXT_PUBLIC_PROD_URL;
     }
 
-    const res = await fetch(`${url}/api/posts`);
+    const res = await fetch(`${url}/blog/`);
     const posts = await res.json();
 
     return {
