@@ -37,15 +37,12 @@ export const getServerSideProps = async (context) => {
         url = process.env.NEXT_PUBLIC_PROD_URL;
     }
 
-    const res = await fetch(`${url}/blog/`);
-    const posts = await res.json();
-
-    const post = posts.find((post) => post.id === id);
+    const res = await fetch(`${url}/blog/?blog_id=${id}`);
+    const post = await res.json();
 
     return {
         props: {
-            post: post,
-            title: post.title,
+            post: post
         },
     };
 };
