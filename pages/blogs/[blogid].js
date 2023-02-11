@@ -12,6 +12,9 @@ const BlogPost = ({ post }) => {
     return (
         <div style={{ textAlign: "center" }}>
             <h1>Blog Title: {post.title}</h1>
+            {post.tags.map((tag, index) => (
+                <span key={index} className="badge">{tag}</span>
+            ))}
             <p style={{ border: "1px solid black", padding: "20px", marginRight: "100px", marginLeft: "100px" }}>{post.body}</p>
             <div style={{
                 marginBottom: "20px",
@@ -20,7 +23,7 @@ const BlogPost = ({ post }) => {
             }}>
                 <HashLoader loading={loading} color="red" />
             </div>
-            <Link href="/blogs"><button onClick={backButtonClickHandler}>Back to Blogs</button></Link>
+            <Link href="/"><button onClick={backButtonClickHandler}>Back to Blogs</button></Link>
         </div>
     );
 };
@@ -42,7 +45,8 @@ export const getServerSideProps = async (context) => {
 
     return {
         props: {
-            post: post
+            post: post,
+            title: post.title,
         },
     };
 };
