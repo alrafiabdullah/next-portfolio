@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { HashLoader } from "react-spinners";
+import Tags from "../../components/Tags";
 
 const BlogPost = ({ post }) => {
     const [loading, setLoading] = useState(false);
@@ -11,10 +12,8 @@ const BlogPost = ({ post }) => {
 
     return (
         <div style={{ textAlign: "center" }}>
-            <h1>Blog Title: {post.title}</h1>
-            {post.tags.map((tag, index) => (
-                <span key={index} className="badge">{tag}</span>
-            ))}
+            <h3 className="fancy_gradient_text mt-5">Blog Title: {post.title}</h3>
+            <Tags allTags={post.tags} /><br />
             <p style={{ border: "1px solid black", padding: "20px", marginRight: "100px", marginLeft: "100px" }}>{post.body}</p>
             <div style={{
                 marginBottom: "20px",
@@ -23,7 +22,7 @@ const BlogPost = ({ post }) => {
             }}>
                 <HashLoader loading={loading} color="red" />
             </div>
-            <Link href="/"><button onClick={backButtonClickHandler}>Back to Blogs</button></Link>
+            <Link href="/"><button className="btn btn-info" onClick={backButtonClickHandler}>Back to Blogs</button></Link>
         </div>
     );
 };
