@@ -36,34 +36,39 @@ const BlogPosts = ({ posts }) => {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <Toaster />
-      <h3>Blogs By Abdullah Al Rafi</h3>
-      <Link href="/"><button>Home</button></Link>
-      <div style={{
-        marginTop: "20px",
-        display: "flex",
-        justifyContent: "center",
-      }}>
-        <HashLoader loading={loading} color="red" />
-      </div>
-      <hr />
-      <Tags />
-      <hr />
-      {posts && posts.map((post, index) =>
-        <div key={index}>
-          <Link href={`/blogs/${post.slug}-${post.id}`}>
-            <h1 style={{ cursor: "pointer" }} onClick={titleClickHandler}>{post.title}</h1>
-          </Link>
-          <p>{post.body}</p>
-          {post.tags.map((tag, index) => (
-            <span key={index} className="badge">{tag}</span>
-          ))} <br />
-          <span><BiLike style={{ color: "blue", cursor: "pointer" }} onClick={() => likeClickHandler(post.title)} /> <BiDislike style={{ color: "red", cursor: "pointer" }} onClick={() => unLikeClickHandler(post.title)} /></span>
-          <hr />
+    <>
+      <div align="center">
+        <Toaster />
+        <h3 className="fancy_gradient_text mt-5">Blogs By Abdullah Al Rafi</h3>
+        <hr />
+        <Tags allTags={[]} />
+        <hr />
+        <div className="card-columns" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+          {posts && posts.map((post, index) =>
+            <div key={index} className="card p-3 m-3">
+              <Link href={`/blogs/${post.slug}-${post.id}`}>
+                <div style={{
+                  marginTop: "20px",
+                  display: "flex",
+                  justifyContent: "center",
+                }}>
+                  <h3 className="card-title" style={{ cursor: "pointer" }} onClick={titleClickHandler}>{post.title}</h3>
+                  <HashLoader loading={loading} color="red" />
+                </div>
+              </Link>
+              <div className="card-text">
+                <Tags allTags={post.tags} /><br />
+                <p>{post.body}</p>
+                <span><BiLike style={{ color: "blue", cursor: "pointer" }} onClick={() => likeClickHandler(post.title)} /> <BiDislike style={{ color: "red", cursor: "pointer" }} onClick={() => unLikeClickHandler(post.title)} /></span>
+              </div>
+              <hr />
+              <small className="text-muted">Written by: <strong className="fancy_gradient_text" style={{ color: "rgb(16, 240, 53)" }}>{post.written_by.username}</strong></small>
+              <small className="text-muted">Published ... ago</small>
+            </div>
+          )}
         </div>
-      )}
-    </div >
+      </div >
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import Head from "next/head";
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
+  //{pageProps.title && `${pageProps.title} | `}
   return <>
     <Head>
       <meta charSet="UTF-8" />
@@ -16,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       <meta name="creator" content="Abdullah Al Rafi" />
       <meta name="publisher" content="Abdullah Al Rafi" />
       <meta name="description" content="Portfolio website of Abdullah Al Rafi, Python & JS Developer, Junior Data Scientist at MedAI" />
-      <title>{pageProps.title && `${pageProps.title} | `}Abdullah Al Rafi</title>
+      <title>Abdullah Al Rafi</title>
     </Head>
     <Component {...pageProps} />
     <Analytics />
