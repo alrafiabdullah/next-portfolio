@@ -46,7 +46,7 @@ const BlogPosts = ({ posts }) => {
                 <HashLoader loading={loading} color="red" />
             </div>
             <hr />
-            {posts.map((post, index) =>
+            {posts && posts.map((post, index) =>
                 <div key={index}>
                     <Link href={`/blogs/${post.slug}-${post.id}`}>
                         <h1 style={{ cursor: "pointer" }} onClick={titleClickHandler}>{post.title}</h1>
@@ -62,13 +62,11 @@ const BlogPosts = ({ posts }) => {
 
 export const getStaticProps = async () => {
     let url = process.env.NEXT_PUBLIC_LOCAL_URL;
-    if (process.env.NODE_ENV === "production") {
-        url = process.env.NEXT_PUBLIC_PROD_URL;
-    }
+    if (process.env.NODE_ENV === "production") url = process.env.NEXT_PUBLIC_PROD_URL;
 
     const res = await fetch(`${url}/blog/`);
     const posts = await res.json();
-
+    
     return {
         props: {
             posts: posts,
