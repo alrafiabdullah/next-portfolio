@@ -9,15 +9,15 @@ const nextConfig = {
         headers: [
           {
             key: "X-Developed-By",
-            value: "Abdullah Al Rafi",
+            value: "Abdullah Al Rafi, Python & JavaScript Developer, Junior Data Scientist at MedAI",
           },
           {
             key: "X-Developed-For",
-            value: "Portfolio Project",
+            value: "Portfolio Blog Project",
           },
           {
             key: "X-Developed-Using",
-            value: "Next.js Firebase and Vercel",
+            value: "Next.js PostgreSQL and Django",
           },
           {
             key: "X-Developed-At",
