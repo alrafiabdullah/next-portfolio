@@ -9,7 +9,7 @@ const nextConfig = {
         headers: [
           {
             key: "X-Developed-By",
-            value: "Abdullah Al Rafi, Python & JavaScript Developer, Junior Data Scientist at MedAI",
+            value: "Abdullah Al Rafi, Python & JavaScript Developer, Analyst (Data Science) at bKash Limited",
           },
           {
             key: "X-Developed-For",
