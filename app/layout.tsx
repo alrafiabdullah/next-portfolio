@@ -1,10 +1,12 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4 } from 'next/font/google';
-import ThemeProvider from "./components/Theme/ThemeProvider";
-import { Navbar } from "./components/Home/Navbar";
 import { Toaster } from "react-hot-toast";
+import { Inter, Source_Serif_4 } from 'next/font/google';
+
+import Footer from "./components/Home/Footer";
+import { Navbar } from "./components/Home/Navbar";
+import ThemeProvider from "./components/Theme/ThemeProvider";
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -47,8 +49,6 @@ export default function RootLayout({
         className={` ${inter.variable} ${sourceSerif.variable} antialiased flex min-h-screen flex-col`}
       >
         <ThemeProvider>
-          <Navbar />
-          {children}
           <Toaster
             position="top-center"
             toastOptions={{
@@ -61,6 +61,9 @@ export default function RootLayout({
               },
             }}
           />
+          <Navbar />
+          {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
