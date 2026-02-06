@@ -2,6 +2,8 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from 'next/font/google';
+import ThemeToggle from "./components/ThemeComponent/ThemeToggle";
+import ThemeProvider from "./components/ThemeComponent/ThemeProvider";
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -25,11 +27,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
+    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme') || 'light';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={` ${inter.variable} ${sourceSerif.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          <ThemeToggle />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
