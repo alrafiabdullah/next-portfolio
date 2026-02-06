@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import { Inter, Source_Serif_4 } from 'next/font/google';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import Footer from "./components/Home/Footer";
 import { Navbar } from "./components/Home/Navbar";
@@ -43,14 +44,14 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme') || 'light';
-                  document.documentElement.setAttribute('data-theme', theme);
+            (function() {
+              try {
+                var theme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', theme);
                 } catch(e) {}
-              })();
-            `,
-          }}
+                })();
+                `,
+              }}
         />
       </head>
       <body
@@ -71,6 +72,7 @@ export default function RootLayout({
           />
           <Navbar />
           {children}
+            <SpeedInsights />
           <Footer />
         </ThemeProvider>
       </body>
