@@ -22,6 +22,14 @@ export const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   title: "Blogs | Abdullah Al Rafi",
   description: "A collection of blogs and articles written by Abdullah Al Rafi, covering various topics in technology, programming, and software development.",
+  openGraph: {
+    title: "Blogs | Abdullah Al Rafi",
+    description: "A collection of blogs and articles written by Abdullah Al Rafi, covering various topics in technology, programming, and software development.",
+    url: "https://abdullahalrafi.com",
+    siteName: "Abdullah Al Rafi's Blog",
+  },
+  keywords: ["blog", "technology", "programming", "software development", "articles", "Abdullah Al Rafi"],
+  authors: [{ name: "Abdullah Al Rafi", url: "https://abdullahalrafi.com" }],
 };
 
 export default function RootLayout({
