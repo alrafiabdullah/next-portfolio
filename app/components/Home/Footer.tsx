@@ -11,7 +11,7 @@ export default function Footer() {
       style={{
         borderColor: "var(--color-border-muted)",
         backgroundColor: "var(--color-bg-main)",
-        transition: "background-color 0.3s ease, border-color 0.3s ease",
+        transition: "background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease",
       }}
     >
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 px-5 py-6 sm:flex-row sm:justify-between">
@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="text-sm font-medium no-underline transition-colors duration-200"
+            className="text-sm font-medium no-underline transition-colors duration-300"
             style={{ color: "var(--color-text-secondary)", fontFamily: "var(--font-sans)" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text-primary)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
@@ -28,7 +28,7 @@ export default function Footer() {
           </Link>
           <Link
             href="/about"
-            className="text-sm font-medium no-underline transition-colors duration-200"
+            className="text-sm font-medium no-underline transition-colors duration-300"
             style={{ color: "var(--color-text-secondary)", fontFamily: "var(--font-sans)" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text-primary)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
@@ -43,7 +43,7 @@ export default function Footer() {
             href="https://github.com/alrafiabdullah"
             target="_blank"
             rel="noopener noreferrer"
-            className="no-underline transition-colors duration-200"
+            className="no-underline transition-colors duration-300"
             style={{ color: "var(--color-text-secondary)" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text-primary)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
@@ -57,7 +57,7 @@ export default function Footer() {
             href="https://www.linkedin.com/in/alrafiabdullah"
             target="_blank"
             rel="noopener noreferrer"
-            className="no-underline transition-colors duration-200"
+            className="no-underline transition-colors duration-300"
             style={{ color: "var(--color-text-secondary)" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text-primary)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
@@ -69,7 +69,7 @@ export default function Footer() {
           </a>
           <a
             href="mailto:abdullah@abdullahalrafi.com"
-            className="no-underline transition-colors duration-200"
+            className="no-underline transition-colors duration-300"
             style={{ color: "var(--color-text-secondary)" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text-primary)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
@@ -84,7 +84,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <p
-          className="text-xs"
+          className="text-xs transition-colors duration-300"
           style={{ color: "var(--color-ui-muted)", fontFamily: "var(--font-sans)", margin: 0 }}
         >
           &copy; {year} Abdullah Al Rafi. All rights reserved.
