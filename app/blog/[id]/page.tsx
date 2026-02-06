@@ -24,6 +24,13 @@ export default function BlogDetailPage() {
       .finally(() => setLoading(false));
   }, [blogId]);
 
+  useEffect(() => {
+    if (blog?.title) {
+      document.title = `Blogs | ${blog.title}`;
+    }
+    return () => { document.title = "Blogs | Abdullah Al Rafi"; };
+  }, [blog?.title]);
+
   if (loading) {
     return (
       <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-12">
