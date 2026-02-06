@@ -20,11 +20,7 @@ export default function TagSelector({ selected, onChange }: TagSelectorProps) {
   }, []);
 
   const toggle = (id: number) => {
-    onChange(
-      selected.includes(id)
-        ? selected.filter((t) => t !== id)
-        : [...selected, id]
-    );
+    onChange(selected.includes(id) ? selected.filter((t) => t !== id) : [...selected, id]);
   };
 
   if (loading) {
@@ -68,13 +64,9 @@ export default function TagSelector({ selected, onChange }: TagSelectorProps) {
                 backgroundColor: isSelected
                   ? "var(--color-accent-primary)"
                   : "var(--color-bg-secondary)",
-                color: isSelected
-                  ? "#ffffff"
-                  : "var(--color-text-secondary)",
+                color: isSelected ? "#ffffff" : "var(--color-text-secondary)",
                 border: `1px solid ${
-                  isSelected
-                    ? "var(--color-accent-primary)"
-                    : "var(--color-border-muted)"
+                  isSelected ? "var(--color-accent-primary)" : "var(--color-border-muted)"
                 }`,
               }}
             >

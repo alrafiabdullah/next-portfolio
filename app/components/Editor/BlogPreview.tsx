@@ -43,10 +43,7 @@ export default function BlogPreview({ title, content }: BlogPreviewProps) {
             {title}
           </h1>
         )}
-        <div
-          className="blog-preview-content"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        <div className="blog-preview-content" dangerouslySetInnerHTML={{ __html: content }} />
       </div>
     </div>
   );

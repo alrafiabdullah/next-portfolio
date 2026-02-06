@@ -3,11 +3,7 @@
 import { NodeViewWrapper, type NodeViewProps } from "@tiptap/react";
 import { useCallback, useRef, useState } from "react";
 
-export default function ResizableImageView({
-  node,
-  updateAttributes,
-  selected,
-}: NodeViewProps) {
+export default function ResizableImageView({ node, updateAttributes, selected }: NodeViewProps) {
   const { src, alt, width, caption } = node.attrs;
   const containerRef = useRef<HTMLDivElement>(null);
   const [isResizing, setIsResizing] = useState(false);
@@ -25,7 +21,7 @@ export default function ResizableImageView({
         const delta = moveEvent.clientX - startX;
         const newWidth = Math.max(
           100,
-          direction === "right" ? startWidth + delta : startWidth - delta
+          direction === "right" ? startWidth + delta : startWidth - delta,
         );
         updateAttributes({ width: Math.round(newWidth) });
       };
@@ -39,14 +35,11 @@ export default function ResizableImageView({
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
     },
-    [width, updateAttributes]
+    [width, updateAttributes],
   );
 
   return (
-    <NodeViewWrapper
-      className="resizable-image-wrapper"
-      data-drag-handle
-    >
+    <NodeViewWrapper className="resizable-image-wrapper" data-drag-handle>
       <figure
         ref={containerRef}
         className={`resizable-image-figure ${selected ? "selected" : ""}`}
@@ -88,9 +81,7 @@ export default function ResizableImageView({
           contentEditable
           suppressContentEditableWarning
           data-placeholder="Add a caption..."
-          onBlur={(e) =>
-            updateAttributes({ caption: e.currentTarget.textContent || null })
-          }
+          onBlur={(e) => updateAttributes({ caption: e.currentTarget.textContent || null })}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();

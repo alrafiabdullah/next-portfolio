@@ -2,33 +2,42 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
-import { Inter, Source_Serif_4 } from 'next/font/google';
+import { Inter, Source_Serif_4 } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Footer from "./components/Home/Footer";
 import { Navbar } from "./components/Home/Navbar";
 import ThemeProvider from "./components/Theme/ThemeProvider";
 
 export const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
+  subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 export const sourceSerif = Source_Serif_4({
-  subsets: ['latin'],
-  variable: '--font-serif',
+  subsets: ["latin"],
+  variable: "--font-serif",
 });
-
 
 export const metadata: Metadata = {
   title: "Blogs | Abdullah Al Rafi",
-  description: "A collection of blogs and articles written by Abdullah Al Rafi, covering various topics in technology, programming, and software development.",
+  description:
+    "A collection of blogs and articles written by Abdullah Al Rafi, covering various topics in technology, programming, and software development.",
   openGraph: {
     title: "Blogs | Abdullah Al Rafi",
-    description: "A collection of blogs and articles written by Abdullah Al Rafi, covering various topics in technology, programming, and software development.",
+    description:
+      "A collection of blogs and articles written by Abdullah Al Rafi, covering various topics in technology, programming, and software development.",
     url: "https://abdullahalrafi.com",
     siteName: "Abdullah Al Rafi's Blog",
   },
-  keywords: ["blog", "technology", "programming", "software development", "articles", "Abdullah Al Rafi"],
+  keywords: [
+    "blog",
+    "technology",
+    "programming",
+    "software development",
+    "articles",
+    "Abdullah Al Rafi",
+  ],
   authors: [{ name: "Abdullah Al Rafi", url: "https://abdullahalrafi.com" }],
 };
 
@@ -38,18 +47,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${sourceSerif.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme') || 'light';
-                  document.documentElement.setAttribute('data-theme', theme);
+            (function() {
+              try {
+                var theme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', theme);
                 } catch(e) {}
-              })();
-            `,
+                })();
+                `,
           }}
         />
       </head>
@@ -71,6 +84,7 @@ export default function RootLayout({
           />
           <Navbar />
           {children}
+          <SpeedInsights />
           <Footer />
         </ThemeProvider>
       </body>

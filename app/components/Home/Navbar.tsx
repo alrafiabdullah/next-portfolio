@@ -6,8 +6,6 @@ import { getTags, Tag } from "@/app/services/tagService";
 import ThemeToggle from "@/app/components/Theme/ThemeToggle";
 import toast from "react-hot-toast";
 
-
-
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [categories, setCategories] = useState<Tag[]>([]);
