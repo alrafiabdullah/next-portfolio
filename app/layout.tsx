@@ -2,8 +2,8 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from 'next/font/google';
-import ThemeToggle from "./components/Theme/ThemeToggle";
 import ThemeProvider from "./components/Theme/ThemeProvider";
+import { Navbar } from "./components/Home/Navbar";
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -46,7 +46,7 @@ export default function RootLayout({
         className={` ${inter.variable} ${sourceSerif.variable} antialiased`}
       >
         <ThemeProvider>
-          <ThemeToggle />
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
