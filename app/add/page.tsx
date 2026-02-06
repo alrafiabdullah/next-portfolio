@@ -21,6 +21,11 @@ export default function AddBlog() {
       return;
     }
 
+    if (selectedTags.length === 0) {
+      toast.error("Please select at least one tag.");
+      return;
+    }
+
     setSaving(true);
     try {
       await createBlog({
