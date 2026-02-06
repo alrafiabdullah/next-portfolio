@@ -63,7 +63,7 @@ export default function ResizableImageView({
 
         <img
           src={src}
-          alt={alt || ""}
+          alt={alt || "Abdullah Al Rafi's blog image"}
           style={{
             width: "100%",
             height: "auto",
