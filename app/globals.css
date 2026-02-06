@@ -27,6 +27,30 @@
     'Segoe UI', Roboto, sans-serif;
 
   --font-serif: 'Source Serif 4', Georgia, Cambria, 'Times New Roman', serif;
+
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  /* Backgrounds */
+  --color-bg-main: #1a1a2e;
+  --color-bg-secondary: #16213e;
+
+  /* Borders / Dividers */
+  --color-border-muted: #2a2a4a;
+
+  /* Decorative / Muted UI */
+  --color-ui-muted: #4a4a6a;
+
+  /* Text */
+  --color-text-primary: #e4e4e7;
+  --color-text-secondary: #a1a1aa;
+
+  /* Accents */
+  --color-accent-primary: #60a5fa; /* lighter blue */
+  --color-accent-secondary: #86c5a0; /* lighter sage green */
+
+  color-scheme: dark;
 }
 
 /* =========================================================
@@ -45,6 +69,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 *,
@@ -175,6 +200,29 @@ hr {
 ::selection {
   background-color: var(--color-accent-primary);
   color: #ffffff;
+}
+
+/* =========================================================
+   Theme Transitions
+   ========================================================= */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* =========================================================
+   Dark Mode Image Handling
+   ========================================================= */
+[data-theme='dark'] img {
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+[data-theme='dark'] img:hover {
+  opacity: 1;
 }
 
 /* =========================================================
