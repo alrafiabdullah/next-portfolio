@@ -1,19 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getBlogs, type BlogResponse } from "@/app/services/blogService";
+import { type BlogResponse } from "@/app/services/blogService";
 import BlogCard from "../BlogComponent/BlogCard";
 
-export const Home = () => {
-  const [blogs, setBlogs] = useState<BlogResponse[]>([]);
-  const [loading, setLoading] = useState(true);
+interface HomeProps {
+  initialBlogs: BlogResponse[];
+}
 
-  useEffect(() => {
-    getBlogs()
-      .then(setBlogs)
-      .catch(() => setBlogs([]))
-      .finally(() => setLoading(false));
-  }, []);
+export const Home = ({ initialBlogs }: HomeProps) => {
+  const blogs = initialBlogs;
 
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-8">
@@ -24,17 +19,7 @@ export const Home = () => {
         Latest Posts
       </h1>
 
-      {loading ? (
-        <div className="flex flex-wrap gap-4">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="card animate-pulse"
-              style={{ width: "100%", maxWidth: "360px", height: "160px" }}
-            />
-          ))}
-        </div>
-      ) : blogs.length === 0 ? (
+      {blogs.length === 0 ? (
         <p style={{ color: "var(--color-text-secondary)" }}>
           No blog posts yet. Check back soon!
         </p>
