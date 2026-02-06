@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from 'next/font/google';
 import ThemeProvider from "./components/Theme/ThemeProvider";
 import { Navbar } from "./components/Home/Navbar";
+import { Toaster } from "react-hot-toast";
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -48,6 +49,18 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           {children}
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              style: {
+                background: "var(--color-bg-secondary)",
+                color: "var(--color-text-primary)",
+                border: "1px solid var(--color-border-muted)",
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.875rem",
+              },
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>
