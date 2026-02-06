@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NotFound = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+    <main className="flex flex-1 flex-col items-center justify-center px-6 text-center">
       <p className="text-8xl font-bold" style={{ color: "var(--color-accent-primary)" }}>
         404
       </p>

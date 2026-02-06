@@ -43,7 +43,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={` ${inter.variable} ${sourceSerif.variable} antialiased`}
+        className={` ${inter.variable} ${sourceSerif.variable} antialiased flex min-h-screen flex-col`}
       >
         <ThemeProvider>
           <Navbar />

@@ -31,12 +31,15 @@ export default function GlobalError({
           fontFamily:
             "'Source Serif 4', Georgia, Cambria, 'Times New Roman', serif",
           transition: "background-color 0.3s ease, color 0.3s ease",
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
         }}
       >
         <main
           style={{
             display: "flex",
-            minHeight: "100vh",
+            flex: 1,
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
