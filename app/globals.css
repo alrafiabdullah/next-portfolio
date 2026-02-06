@@ -122,12 +122,15 @@ p {
    ========================================================= */
 a {
   color: var(--color-accent-primary);
-  text-decoration: none;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 a:hover {
-  opacity: 0.85;
+  text-decoration-color: var(--color-accent-primary);
 }
 
 a:focus-visible {
@@ -223,6 +226,37 @@ hr {
 
 [data-theme='dark'] img:hover {
   opacity: 1;
+}
+
+/* =========================================================
+   Navbar Link Hover Animation
+   ========================================================= */
+.nav-link {
+  position: relative;
+  text-decoration: none !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 60%;
+  height: 1.5px;
+  background-color: color-mix(in srgb, var(--color-accent-primary) 35%, transparent);
+  border-radius: 1px;
+  transform: translateX(-50%) scaleX(1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+  transform: scale(1.05);
+}
+
+.nav-link:hover::after {
+  transform: translateX(-50%) scaleX(0);
 }
 
 /* =========================================================
