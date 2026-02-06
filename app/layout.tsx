@@ -2,8 +2,8 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from 'next/font/google';
-import ThemeToggle from "./components/ThemeComponent/ThemeToggle";
-import ThemeProvider from "./components/ThemeComponent/ThemeProvider";
+import ThemeToggle from "./components/Theme/ThemeToggle";
+import ThemeProvider from "./components/Theme/ThemeProvider";
 
 export const inter = Inter({
   subsets: ['latin'],
