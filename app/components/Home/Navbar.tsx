@@ -2,24 +2,20 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Category, getCategories } from "@/app/services/categoryService";
+import { getTags, Tag } from "@/app/services/tagService";
 import ThemeToggle from "@/app/components/Theme/ThemeToggle";
+import toast from "react-hot-toast";
 
-const fallbackCategories: Category[] = [
-  { name: "Technology", href: "/category/technology" },
-  { name: "Programming", href: "/category/programming" },
-  { name: "Design", href: "/category/design" },
-  { name: "Tutorials", href: "/category/tutorials" },
-];
+
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [categories, setCategories] = useState<Category[]>(fallbackCategories);
+  const [categories, setCategories] = useState<Tag[]>([]);
 
   useEffect(() => {
-    getCategories()
+    getTags(4)
       .then(setCategories)
-      .catch(() => setCategories(fallbackCategories));
+      .catch(() => toast.error("Failed to load categories"));
   }, []);
 
   return (
@@ -56,7 +52,7 @@ export const Navbar = () => {
             <Link
               key={cat.name}
               href={cat.href}
-              className="rounded-md px-3 py-1.5 text-sm font-medium no-underline transition-colors duration-200"
+              className="nav-link rounded-md px-3 py-1.5 text-sm font-medium no-underline transition-colors duration-200"
               style={{
                 color: "var(--color-text-secondary)",
                 fontFamily: "var(--font-sans)",
@@ -81,7 +77,7 @@ export const Navbar = () => {
 
           <Link
             href="/about"
-            className="rounded-md px-3 py-1.5 text-sm font-medium no-underline transition-colors duration-200"
+            className="nav-link rounded-md px-3 py-1.5 text-sm font-medium no-underline transition-colors duration-200"
             style={{
               color: "var(--color-text-secondary)",
               fontFamily: "var(--font-sans)",
@@ -98,7 +94,7 @@ export const Navbar = () => {
             About
           </Link>
 
-          <Link
+          {/* <Link
             href="/contact"
             className="rounded-md px-3 py-1.5 text-sm font-medium no-underline transition-colors duration-200"
             style={{
@@ -115,7 +111,7 @@ export const Navbar = () => {
             }}
           >
             Contact
-          </Link>
+          </Link> */}
 
           <span
             className="mx-2 h-5 w-px"
@@ -191,7 +187,7 @@ export const Navbar = () => {
               key={cat.name}
               href={cat.href}
               onClick={() => setMobileOpen(false)}
-              className="rounded-md px-3 py-2 text-sm font-medium no-underline transition-colors duration-200"
+              className="nav-link rounded-md px-3 py-2 text-sm font-medium no-underline transition-colors duration-200"
               style={{
                 color: "var(--color-text-secondary)",
                 fontFamily: "var(--font-sans)",
@@ -209,7 +205,7 @@ export const Navbar = () => {
           <Link
             href="/about"
             onClick={() => setMobileOpen(false)}
-            className="rounded-md px-3 py-2 text-sm font-medium no-underline"
+            className="nav-link rounded-md px-3 py-2 text-sm font-medium no-underline"
             style={{
               color: "var(--color-text-secondary)",
               fontFamily: "var(--font-sans)",
@@ -220,7 +216,7 @@ export const Navbar = () => {
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="rounded-md px-3 py-2 text-sm font-medium no-underline"
+            className="nav-link rounded-md px-3 py-2 text-sm font-medium no-underline"
             style={{
               color: "var(--color-text-secondary)",
               fontFamily: "var(--font-sans)",
