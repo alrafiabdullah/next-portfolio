@@ -10,7 +10,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      className="fixed top-5 right-5 z-50 flex h-10 w-10 items-center justify-center rounded-full border cursor-pointer transition-all duration-300 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2"
+      className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer transition-all duration-300 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2"
       style={{
         backgroundColor: "var(--color-bg-secondary)",
         borderColor: "var(--color-border-muted)",
