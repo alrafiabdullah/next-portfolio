@@ -1,12 +1,9 @@
 import { Home } from "./components/Home/Home";
+import { getBlogs } from "./services/blogService";
 
+export const revalidate = 10;
 
-const MainHome = () => {
-  return (
-    <>
-    <Home />
-    </>
-  );
+export default async function MainHome() {
+  const blogs = await getBlogs().catch(() => []);
+  return <Home initialBlogs={blogs} />;
 }
-
-export default MainHome;
