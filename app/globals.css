@@ -1,26 +1,168 @@
 @import "tailwindcss";
 
+/* =========================================================
+   CSS Variables (Design Tokens)
+   ========================================================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --color-bg-main: #f9f8f6;
+  --color-bg-secondary: #efe9e3;
+
+  /* Borders / Dividers */
+  --color-border-muted: #d9cfc7;
+
+  /* Decorative / Muted UI */
+  --color-ui-muted: #c9b59c;
+
+  /* Text */
+  --color-text-primary: #2e2e2e;
+  --color-text-secondary: #555555;
+
+  /* Accents */
+  --color-accent-primary: #2f5d8a; /* blue */
+  --color-accent-secondary: #6e8f7a; /* sage green */
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+
+  --font-serif: 'Source Serif 4', Georgia, Cambria, 'Times New Roman', serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================================================
+   Base Styles
+   ========================================================= */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg-main);
+  color: var(--color-text-primary);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   Typography
+   ========================================================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 4vw, 2.75rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1.25em;
+  color: var(--color-text-secondary);
+}
+
+/* =========================================================
+   Links
+   ========================================================= */
+a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   Lists
+   ========================================================= */
+ul,
+ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* =========================================================
+   Code Blocks (Tech Blog Friendly)
+   ========================================================= */
+pre {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-muted);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+/* =========================================================
+   Utility Enhancements
+   ========================================================= */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border-muted);
+  margin: 2rem 0;
+}
+
+::selection {
+  background-color: var(--color-accent-primary);
+  color: #ffffff;
+}
+
+/* =========================================================
+   Tailwind Component Layer (Optional)
+   ========================================================= */
+@layer components {
+  .card {
+    @apply rounded-lg border p-6;
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-border-muted);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition;
+    background-color: var(--color-accent-primary);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition;
+    background-color: var(--color-accent-secondary);
+    color: #ffffff;
+  }
 }
