@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useSyncExternalStore,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
@@ -57,11 +51,7 @@ function setTheme(next: Theme) {
 
 // ── Component ───────────────────────────────────────────
 
-export default function ThemeProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ThemeProvider({ children }: { children: React.ReactNode }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   // Keep data-theme attribute in sync
@@ -74,10 +64,7 @@ export default function ThemeProvider({
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const handler = (e: MediaQueryListEvent) => {
       if (!localStorage.getItem("theme")) {
-        document.documentElement.setAttribute(
-          "data-theme",
-          e.matches ? "dark" : "light"
-        );
+        document.documentElement.setAttribute("data-theme", e.matches ? "dark" : "light");
         emitChange();
       }
     };
@@ -94,9 +81,5 @@ export default function ThemeProvider({
     }, 350);
   }, [theme]);
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }

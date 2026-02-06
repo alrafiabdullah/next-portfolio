@@ -10,14 +10,11 @@ const NotFound = () => {
       <p className="mt-2 max-w-md" style={{ color: "var(--color-text-secondary)" }}>
         Sorry, the page you're looking for doesn't exist or has been moved.
       </p>
-      <Link
-        href="/"
-        className="btn-primary mt-8 !text-white"
-      >
+      <Link href="/" className="btn-primary mt-8 !text-white">
         Back to Home
       </Link>
     </main>
   );
-}
+};
 
 export default NotFound;

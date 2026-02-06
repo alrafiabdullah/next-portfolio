@@ -28,8 +28,7 @@ export default function GlobalError({
         style={{
           backgroundColor: bg,
           color: textPrimary,
-          fontFamily:
-            "'Source Serif 4', Georgia, Cambria, 'Times New Roman', serif",
+          fontFamily: "'Source Serif 4', Georgia, Cambria, 'Times New Roman', serif",
           transition: "background-color 0.3s ease, color 0.3s ease",
           display: "flex",
           flexDirection: "column",
@@ -62,8 +61,7 @@ export default function GlobalError({
               marginTop: "1rem",
               fontSize: "1.875rem",
               fontWeight: 600,
-              fontFamily:
-                "'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+              fontFamily: "'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
             }}
           >
             Something went wrong

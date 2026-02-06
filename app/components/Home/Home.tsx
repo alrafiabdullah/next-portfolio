@@ -20,9 +20,7 @@ export const Home = ({ initialBlogs }: HomeProps) => {
       </h1>
 
       {blogs.length === 0 ? (
-        <p style={{ color: "var(--color-text-secondary)" }}>
-          No blog posts yet. Check back soon!
-        </p>
+        <p style={{ color: "var(--color-text-secondary)" }}>No blog posts yet. Check back soon!</p>
       ) : (
         <div className="flex flex-wrap gap-4">
           {blogs.map((blog) => (

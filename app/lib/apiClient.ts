@@ -16,7 +16,7 @@ apiClient.interceptors.request.use(
     // if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 // Response interceptor
@@ -25,17 +25,14 @@ apiClient.interceptors.response.use(
   (error) => {
     // Handle common errors globally
     if (error.response) {
-      console.error(
-        `API Error [${error.response.status}]:`,
-        error.response.data
-      );
+      console.error(`API Error [${error.response.status}]:`, error.response.data);
     } else if (error.request) {
       console.error("No response received:", error.request);
     } else {
       console.error("Request error:", error.message);
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default apiClient;

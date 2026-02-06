@@ -28,7 +28,9 @@ export default function BlogDetailPage() {
     if (blog?.title) {
       document.title = `Blogs | ${blog.title}`;
     }
-    return () => { document.title = "Blogs | Abdullah Al Rafi"; };
+    return () => {
+      document.title = "Blogs | Abdullah Al Rafi";
+    };
   }, [blog?.title]);
 
   if (loading) {
@@ -63,10 +65,7 @@ export default function BlogDetailPage() {
   if (error || !blog) {
     return (
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-5 py-12 text-center">
-        <h1
-          className="mb-4 text-2xl font-bold"
-          style={{ fontFamily: "var(--font-sans)" }}
-        >
+        <h1 className="mb-4 text-2xl font-bold" style={{ fontFamily: "var(--font-sans)" }}>
           Post not found
         </h1>
         <p className="mb-6" style={{ color: "var(--color-text-secondary)" }}>

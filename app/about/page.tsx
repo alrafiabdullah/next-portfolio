@@ -18,15 +18,14 @@ export default function AboutPage() {
 
       <section className="mb-10">
         <p style={{ color: "var(--color-text-secondary)" }}>
-          I&apos;m Abdullah Al Rafi — a Machine Learning Engineer currently pursuing
-          my MSc in Natural Language Processing at Universität Trier, Germany.
-          Previously, I built production ML systems at bKash Limited in Dhaka,
-          including multilingual OCR solutions serving 100k+ requests per week.
+          I&apos;m Abdullah Al Rafi — a Machine Learning Engineer currently pursuing my MSc in
+          Natural Language Processing at Universität Trier, Germany. Previously, I built production
+          ML systems at bKash Limited in Dhaka, including multilingual OCR solutions serving 100k+
+          requests per week.
         </p>
         <p style={{ color: "var(--color-text-secondary)" }}>
-          This blog is where I write about machine learning, NLP, web development,
-          and the occasional life update. For my full portfolio and work history,
-          visit{" "}
+          This blog is where I write about machine learning, NLP, web development, and the
+          occasional life update. For my full portfolio and work history, visit{" "}
           <a href="https://abdullahalrafi.com" target="_blank" rel="noopener noreferrer">
             abdullahalrafi.com
           </a>
@@ -35,18 +34,20 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2
-          className="mb-3 text-2xl font-semibold"
-          style={{ fontFamily: "var(--font-sans)" }}
-        >
+        <h2 className="mb-3 text-2xl font-semibold" style={{ fontFamily: "var(--font-sans)" }}>
           Get in Touch
         </h2>
         <p style={{ color: "var(--color-text-secondary)" }}>
           <a href="mailto:abdullah@abdullahalrafi.com">Email</a> ·{" "}
           <a href="https://github.com/alrafiabdullah" target="_blank" rel="noopener noreferrer">
             GitHub
-          </a> ·{" "}
-          <a href="https://www.linkedin.com/in/abdullahalrafi" target="_blank" rel="noopener noreferrer">
+          </a>{" "}
+          ·{" "}
+          <a
+            href="https://www.linkedin.com/in/abdullahalrafi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             LinkedIn
           </a>
         </p>

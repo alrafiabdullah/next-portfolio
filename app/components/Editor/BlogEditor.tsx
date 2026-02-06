@@ -19,10 +19,7 @@ interface BlogEditorProps {
   onChange: (html: string, json: object) => void;
 }
 
-export default function BlogEditor({
-  content,
-  onChange,
-}: BlogEditorProps) {
+export default function BlogEditor({ content, onChange }: BlogEditorProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const editor = useEditor({

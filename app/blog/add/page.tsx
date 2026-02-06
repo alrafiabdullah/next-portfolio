@@ -86,19 +86,11 @@ export default function AddBlog() {
             className="rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 cursor-pointer"
             style={{
               fontFamily: "var(--font-sans)",
-              backgroundColor:
-                activeTab === tab.key
-                  ? "var(--color-bg-main)"
-                  : "transparent",
+              backgroundColor: activeTab === tab.key ? "var(--color-bg-main)" : "transparent",
               color:
-                activeTab === tab.key
-                  ? "var(--color-text-primary)"
-                  : "var(--color-text-secondary)",
+                activeTab === tab.key ? "var(--color-text-primary)" : "var(--color-text-secondary)",
               border: "none",
-              boxShadow:
-                activeTab === tab.key
-                  ? "0 1px 3px rgba(0,0,0,0.08)"
-                  : "none",
+              boxShadow: activeTab === tab.key ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
             }}
           >
             {tab.label}
@@ -123,9 +115,7 @@ export default function AddBlog() {
       <div className="mt-6 flex items-center justify-end gap-3">
         <button
           type="button"
-          onClick={() =>
-            setActiveTab(activeTab === "write" ? "preview" : "write")
-          }
+          onClick={() => setActiveTab(activeTab === "write" ? "preview" : "write")}
           className="rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer"
           style={{
             fontFamily: "var(--font-sans)",

@@ -65,9 +65,7 @@ const ResizableImage = Node.create<ResizableImageOptions>({
             src: img?.getAttribute("src"),
             alt: img?.getAttribute("alt"),
             title: img?.getAttribute("title"),
-            width: img?.getAttribute("width")
-              ? Number(img.getAttribute("width"))
-              : null,
+            width: img?.getAttribute("width") ? Number(img.getAttribute("width")) : null,
             caption: figcaption?.textContent || null,
           };
         },
@@ -80,9 +78,7 @@ const ResizableImage = Node.create<ResizableImageOptions>({
             src: el.getAttribute("src"),
             alt: el.getAttribute("alt"),
             title: el.getAttribute("title"),
-            width: el.getAttribute("width")
-              ? Number(el.getAttribute("width"))
-              : null,
+            width: el.getAttribute("width") ? Number(el.getAttribute("width")) : null,
           };
         },
       },

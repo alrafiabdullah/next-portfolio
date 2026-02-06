@@ -22,9 +22,7 @@ export default function BlogItem({ blog }: BlogItemProps) {
         >
           {date}
           {blog.written_by && (
-            <span style={{ color: "var(--color-text-secondary)" }}>
-              {" "}· {blog.written_by}
-            </span>
+            <span style={{ color: "var(--color-text-secondary)" }}> · {blog.written_by}</span>
           )}
         </p>
         <h1

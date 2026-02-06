@@ -178,18 +178,13 @@ export default function EditorToolbar({ editor, onImageUpload }: ToolbarProps) {
               className="flex h-8 min-w-8 items-center justify-center rounded px-1.5 text-xs font-semibold transition-colors duration-150 cursor-pointer"
               style={{
                 fontFamily: "var(--font-sans)",
-                backgroundColor: btn.isActive
-                  ? "var(--color-accent-primary)"
-                  : "transparent",
-                color: btn.isActive
-                  ? "#ffffff"
-                  : "var(--color-text-secondary)",
+                backgroundColor: btn.isActive ? "var(--color-accent-primary)" : "transparent",
+                color: btn.isActive ? "#ffffff" : "var(--color-text-secondary)",
                 border: "none",
               }}
               onMouseEnter={(e) => {
                 if (!btn.isActive) {
-                  e.currentTarget.style.backgroundColor =
-                    "var(--color-bg-main)";
+                  e.currentTarget.style.backgroundColor = "var(--color-bg-main)";
                   e.currentTarget.style.color = "var(--color-text-primary)";
                 }
               }}
