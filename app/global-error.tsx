@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export default function GlobalError({
   error,
   reset,
@@ -7,14 +9,28 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDark(theme === "dark" || (!theme && prefersDark));
+  }, []);
+
+  const bg = isDark ? "#1a1a2e" : "#f9f8f6";
+  const textPrimary = isDark ? "#e4e4e7" : "#2e2e2e";
+  const textSecondary = isDark ? "#a1a1aa" : "#555555";
+  const accent = isDark ? "#60a5fa" : "#2f5d8a";
+
   return (
-    <html lang="en">
+    <html lang="en" data-theme={isDark ? "dark" : "light"}>
       <body
         style={{
-          backgroundColor: "var(--color-bg-main, #f9f8f6)",
-          color: "var(--color-text-primary, #2e2e2e)",
+          backgroundColor: bg,
+          color: textPrimary,
           fontFamily:
             "'Source Serif 4', Georgia, Cambria, 'Times New Roman', serif",
+          transition: "background-color 0.3s ease, color 0.3s ease",
         }}
       >
         <main
@@ -32,7 +48,7 @@ export default function GlobalError({
             style={{
               fontSize: "6rem",
               fontWeight: 700,
-              color: "var(--color-accent-primary, #2f5d8a)",
+              color: accent,
               lineHeight: 1,
             }}
           >
@@ -53,7 +69,7 @@ export default function GlobalError({
             style={{
               marginTop: "0.5rem",
               maxWidth: "28rem",
-              color: "var(--color-text-secondary, #555555)",
+              color: textSecondary,
             }}
           >
             An unexpected error occurred. Please try again.
@@ -68,7 +84,7 @@ export default function GlobalError({
               borderRadius: "0.375rem",
               padding: "0.5rem 1rem",
               fontWeight: 500,
-              backgroundColor: "var(--color-accent-primary, #2f5d8a)",
+              backgroundColor: accent,
               color: "#ffffff",
               border: "none",
               cursor: "pointer",
