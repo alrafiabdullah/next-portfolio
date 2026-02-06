@@ -4,6 +4,7 @@ export type BlogIsDraft = true | false;
 
 export interface BlogPayload {
   title: string;
+  written_by: string;
   content_html: string;
   content_json: object;
   is_draft: BlogIsDraft;
@@ -11,18 +12,31 @@ export interface BlogPayload {
 }
 
 export interface BlogResponse {
-  id: number;
+  id: string;
   title: string;
   content_html: string;
   content_json: object;
   is_draft: BlogIsDraft;
+  written_by: string;
+  slug: string;
   tags: number[];
-  created_at: string;
+  published_at: string;
   updated_at: string;
 }
 
 export async function createBlog(payload: BlogPayload): Promise<BlogResponse> {
     console.log("Creating blog with payload:", payload); // Debug log
-  const { data } = await apiClient.post<BlogResponse>("/blog/posts/", payload);
+    payload.written_by = "abdullah"; // Hardcoded for now, replace with actual user data in production
+  const { data } = await apiClient.post<BlogResponse>("/blog/", payload);
+  return data;
+}
+
+export async function getBlog(id: string): Promise<BlogResponse> {
+  const { data } = await apiClient.get<BlogResponse>(`/blog/?blog_id=${id}`);
+  return data;
+}
+
+export async function getBlogs(): Promise<BlogResponse[]> {
+  const { data } = await apiClient.get<BlogResponse[]>("/blog/");
   return data;
 }
