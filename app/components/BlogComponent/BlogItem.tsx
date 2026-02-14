@@ -42,6 +42,23 @@ export default function BlogItem({ blog }: BlogItemProps) {
             </span>
           )}
         </p>
+
+        {blog.tags && blog.tags.length > 0 && (
+          <div className="mb-6 flex flex-wrap gap-2">
+            {blog.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full px-3 py-1 text-sm font-medium"
+                style={{
+                  backgroundColor: "var(--color-bg-secondary)",
+                  color: "var(--color-text-secondary)",
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </header>
 
       {blog.cover_image_url && (
