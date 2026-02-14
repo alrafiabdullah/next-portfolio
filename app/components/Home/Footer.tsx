@@ -16,7 +16,7 @@ export default function Footer() {
     >
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 px-5 py-6 sm:flex-row sm:justify-between">
         {/* Nav links */}
-        <div className="flex items-center gap-4">
+        <div className="hidden gap-3 sm:flex">
           <Link
             href="/"
             className="text-sm font-medium no-underline transition-colors duration-300"
@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
 
         {/* Socials */}
-        <div className="flex items-center gap-3">
+        <div className="flex  gap-3">
           <a
             href="https://github.com/alrafiabdullah"
             target="_blank"
@@ -88,7 +88,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <p
-          className="text-xs transition-colors duration-300"
+          className="text-xs text-center transition-colors duration-300 sm:text-right"
           style={{ color: "var(--color-ui-muted)", fontFamily: "var(--font-sans)", margin: 0 }}
         >
           &copy; {year} Abdullah Al Rafi. All rights reserved.
