@@ -5,7 +5,7 @@ export const WITTY_401_MESSAGES = [
     "Hold on! My digital bouncer isn't seeing your name on the guest list. 📝",
     "I'm a bit picky about who gets behind the scenes. Forget it! 🔒",
     "Whoops! It seems you're trying to access my private stash. 🙅‍♂️",
-    "I'd give you a tour, but you'll need a ticket (or a token) first! 🎫",
+    "I'd give you a tour, but you'll need a ticket first! 🎫",
     "My mom told me not to talk to unauthenticated users. 🙊",
     "I've locked this one for a reason. Get lost! 🔑",
     "Wait, did you lose your key to my blog? 🗝️",
