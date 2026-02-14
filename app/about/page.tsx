@@ -38,7 +38,7 @@ export default function AboutPage() {
           Get in Touch
         </h2>
         <p style={{ color: "var(--color-text-secondary)" }}>
-          <a href="mailto:abdullah@abdullahalrafi.com">Email</a> ·{" "}
+          <a href="https://abdullahalrafi.medium.com" target="_blank" rel="noopener noreferrer">Medium</a> ·{" "}
           <a href="https://github.com/alrafiabdullah" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>{" "}
