@@ -54,9 +54,23 @@ function setTheme(next: Theme) {
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  // Keep data-theme attribute in sync
+  // Keep data-theme attribute in sync and update favicon
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+
+    // Update favicon dynamically
+    const favicons = document.querySelectorAll('link[rel~="icon"]');
+    favicons.forEach((f, i) => {
+      const favicon = f as HTMLLinkElement;
+      if (i === 0) {
+        favicon.href = theme === "dark" ? "/icon-dark.svg" : "/icon-light.svg";
+        // Remove media attribute to override system preference once the theme is explicitly set
+        favicon.removeAttribute("media");
+      } else {
+        // Remove other icon tags (like the system-match ones) to prevent conflicts
+        favicon.remove();
+      }
+    });
   }, [theme]);
 
   // Listen for OS preference changes
