@@ -36,7 +36,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     No blog posts found for {showCategoryName}.
                 </p>
             ) : (
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap justify-center gap-4 sm:justify-start">
                     {blogs.map((blog) => (
                         <BlogCard key={blog.id} blog={blog} />
                     ))}
