@@ -1,4 +1,6 @@
 import axios from "axios";
+import toast from "react-hot-toast";
+import { getRandomMessage } from "../constants";
 
 const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000",
@@ -25,7 +27,12 @@ apiClient.interceptors.response.use(
   (error) => {
     // Handle common errors globally
     if (error.response) {
-      console.error(`API Error [${error.response.status}]:`, error.response.data);
+      if (error.response.status === 401) {
+        const randomMessage = getRandomMessage();
+        toast.error(randomMessage);
+      } else {
+        console.error(`API Error [${error.response.status}]:`, error.response.data);
+      }
     } else if (error.request) {
       console.error("No response received:", error.request);
     } else {
