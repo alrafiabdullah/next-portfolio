@@ -39,6 +39,18 @@ export const metadata: Metadata = {
     "Abdullah Al Rafi",
   ],
   authors: [{ name: "Abdullah Al Rafi", url: "https://abdullahalrafi.com" }],
+  icons: {
+    icon: [
+      {
+        url: "/icon-light.svg",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark.svg",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
