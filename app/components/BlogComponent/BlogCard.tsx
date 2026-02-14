@@ -38,9 +38,15 @@ export default function BlogCard({ blog }: BlogCardProps) {
           <img
             src={blog.cover_image_url}
             alt={blog.title}
-            className={`h-48 w-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "absolute inset-0 opacity-0"
+            className={`h-48 w-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${imageLoaded ? "opacity-100 scale-100" : "absolute inset-0 opacity-0 scale-95"
               }`}
             onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(true)}
+            ref={(img) => {
+              if (img && img.complete) {
+                setImageLoaded(true);
+              }
+            }}
             loading="lazy"
             decoding="async"
           />
