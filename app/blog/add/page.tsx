@@ -27,6 +27,11 @@ export default function AddBlog() {
       return;
     }
 
+    if (!coverImage) {
+      toast.error("Please upload a cover image.");
+      return;
+    }
+
     setSaving(true);
     try {
       await createBlog({
@@ -38,8 +43,10 @@ export default function AddBlog() {
         tags: selectedTags,
       });
       toast.success(isDraft ? "Draft saved!" : "Blog published!");
-    } catch {
-      toast.error(`Failed to ${isDraft ? "save draft" : "publish"}.`);
+    } catch (error: any) {
+      if (error.response?.status !== 401) {
+        toast.error(`Failed to ${isDraft ? "save draft" : "publish"}.`);
+      }
     } finally {
       setSaving(false);
     }
