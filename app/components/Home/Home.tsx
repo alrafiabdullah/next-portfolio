@@ -1,10 +1,10 @@
 "use client";
 
-import { type BlogResponse } from "@/app/services/blogService";
+import { type HomeBlogResponse } from "@/app/services/blogService";
 import BlogCard from "../BlogComponent/BlogCard";
 
 interface HomeProps {
-  initialBlogs: BlogResponse[];
+  initialBlogs: HomeBlogResponse[];
 }
 
 export const Home = ({ initialBlogs }: HomeProps) => {
