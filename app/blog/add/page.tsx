@@ -140,7 +140,7 @@ export default function AddBlog() {
             key={tab.key}
             type="button"
             onClick={() => setActiveTab(tab.key)}
-            className="rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 cursor-pointer"
+            className="flex-1 rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 cursor-pointer"
             style={{
               fontFamily: "var(--font-sans)",
               backgroundColor: activeTab === tab.key ? "var(--color-bg-main)" : "transparent",
@@ -169,11 +169,11 @@ export default function AddBlog() {
       )}
 
       {/* Actions */}
-      <div className="mt-6 flex items-center justify-end gap-3">
+      <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3">
         <button
           type="button"
           onClick={() => setActiveTab(activeTab === "write" ? "preview" : "write")}
-          className="rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer"
+          className="w-full sm:w-auto rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer"
           style={{
             fontFamily: "var(--font-sans)",
             backgroundColor: "var(--color-bg-secondary)",
@@ -187,7 +187,7 @@ export default function AddBlog() {
           type="button"
           onClick={() => handleSave(true)}
           disabled={saving}
-          className="btn-secondary !text-white"
+          className="btn-secondary !text-white w-full sm:w-auto"
           style={{
             opacity: saving ? 0.6 : 1,
             cursor: saving ? "not-allowed" : "pointer",
@@ -199,7 +199,7 @@ export default function AddBlog() {
           type="button"
           onClick={() => handleSave(false)}
           disabled={saving}
-          className="btn-primary !text-white"
+          className="btn-primary !text-white w-full sm:w-auto"
           style={{
             opacity: saving ? 0.6 : 1,
             cursor: saving ? "not-allowed" : "pointer",
