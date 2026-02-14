@@ -1,6 +1,8 @@
-import type { MetadataRoute } from "next";
-import { getBlogs } from "@/app/services/blogService";
 import { headers } from "next/headers";
+import type { MetadataRoute } from "next";
+
+import { getTags } from "@/app/services/tagService";
+import { getBlogs } from "@/app/services/blogService";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const headersList = await headers();
@@ -38,5 +40,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // If API is unreachable, return only static routes
   }
 
-  return [...staticRoutes, ...blogRoutes];
+  // Dynamic category routes
+  let categoryRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const tags = await getTags();
+    categoryRoutes = tags.map((tag) => ({
+      url: `${baseUrl}/category/${tag.name.toLowerCase().replace(/[_\s]+/g, "-")}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+  } catch {
+    // If API is unreachable, stay empty
+  }
+
+  return [...staticRoutes, ...categoryRoutes, ...blogRoutes];
 }
