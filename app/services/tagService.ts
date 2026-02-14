@@ -1,5 +1,5 @@
 import apiClient from "@/app/lib/apiClient";
-import { BlogResponse } from "./blogService";
+import { HomeBlogResponse } from "./blogService";
 
 export interface TagData {
   id: number;
@@ -39,7 +39,7 @@ export async function getTags(tagCount: number = -1): Promise<Tag[]> {
   return modifiedTags;
 }
 
-export async function getBlogsByTag(tagName: string): Promise<BlogResponse[]> {
-  const { data } = await apiClient.get<BlogResponse[]>(`/blog/tags?tag_name=${tagName}`);
+export async function getBlogsByTag(tagName: string): Promise<HomeBlogResponse[]> {
+  const { data } = await apiClient.get<HomeBlogResponse[]>(`/blog/tags?tag_name=${tagName}`);
   return data;
 }
