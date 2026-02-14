@@ -81,7 +81,7 @@ export default function BlogEditor({ content, onChange }: BlogEditorProps) {
 
   return (
     <div
-      className="overflow-hidden rounded-lg border"
+      className="rounded-lg border"
       style={{
         borderColor: "var(--color-border-muted)",
         backgroundColor: "var(--color-bg-main)",

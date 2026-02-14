@@ -161,10 +161,13 @@ export default function EditorToolbar({ editor, onImageUpload }: ToolbarProps) {
 
   return (
     <div
-      className="flex flex-wrap gap-1 border-b px-3 py-2"
+      className="sticky top-0 z-20 flex flex-wrap gap-1 border-b px-3 py-2"
       style={{
         borderColor: "var(--color-border-muted)",
         backgroundColor: "var(--color-bg-secondary)",
+        position: "sticky",
+        top: "61px",
+        zIndex: 30,
       }}
     >
       {groups.map((group, gi) => (
