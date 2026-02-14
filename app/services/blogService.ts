@@ -27,7 +27,7 @@ export interface BlogResponse {
   is_draft: BlogIsDraft;
   written_by: UserResponse;
   slug: string;
-  tags: number[];
+  tags: string[];
   published_at: string;
   updated_at: string;
 }
