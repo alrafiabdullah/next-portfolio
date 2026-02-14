@@ -10,11 +10,12 @@ interface BlogCardProps {
 export default function BlogCard({ blog }: BlogCardProps) {
   const excerpt =
     blog.content_html
-      .replace(/<[^>]*>/g, "")
+      .replace(/<[^>]*>/g, " ")
+      .split(/(?<=[.!?])\s+/, 1)[0]
       .slice(0, 150)
-      .trim() + (blog.content_html.length > 150 ? "…" : "");
+      .trim();
 
-  const date = new Date(blog.published_at).toLocaleDateString("en-US", {
+  const date = new Date(blog.updated_at).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -26,6 +27,16 @@ export default function BlogCard({ blog }: BlogCardProps) {
       className="card block no-underline transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
       style={{ flex: "1 1 calc(33.333% - 1rem)", minWidth: "240px", maxWidth: "360px" }}
     >
+      {blog.cover_image_url && (
+        <div className="mb-4 overflow-hidden rounded-lg">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={blog.cover_image_url}
+            alt={blog.title}
+            className="h-48 w-full object-cover transition-transform duration-200 hover:scale-105"
+          />
+        </div>
+      )}
       <p
         className="mb-1 text-xs font-medium uppercase tracking-widest"
         style={{ color: "var(--color-ui-muted)", fontFamily: "var(--font-sans)" }}
