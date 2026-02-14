@@ -55,7 +55,7 @@ export async function getBlog(id: string): Promise<BlogResponse> {
   return data;
 }
 
-export async function getBlogs(): Promise<BlogResponse[]> {
-  const { data } = await apiClient.get<BlogResponse[]>("/blog/");
+export async function getBlogs(): Promise<HomeBlogResponse[]> {
+  const { data } = await apiClient.get<HomeBlogResponse[]>("/blog/?less_details=true");
   return data;
 }
