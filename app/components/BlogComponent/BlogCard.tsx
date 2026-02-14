@@ -1,20 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import type { BlogResponse } from "@/app/services/blogService";
+import type { HomeBlogResponse } from "@/app/services/blogService";
 
 interface BlogCardProps {
-  blog: BlogResponse;
+  blog: HomeBlogResponse;
 }
 
 export default function BlogCard({ blog }: BlogCardProps) {
-  const excerpt =
-    blog.content_html
-      .replace(/<[^>]*>/g, " ")
-      .split(/(?<=[.!?])\s+/, 1)[0]
-      .slice(0, 150)
-      .trim();
-
   const date = new Date(blog.updated_at).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -71,7 +64,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
         className="text-sm leading-relaxed"
         style={{ color: "var(--color-text-secondary)", marginBottom: 0 }}
       >
-        {excerpt}
+        {blog.excerpt}
       </p>
       {blog.tags && blog.tags.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
