@@ -1,6 +1,8 @@
 "use client";
 
 import { type Editor } from "@tiptap/react";
+import { useState } from "react";
+import LinkInput from "./LinkInput";
 
 interface ToolbarProps {
   editor: Editor | null;
@@ -15,7 +17,18 @@ interface ToolbarButton {
 }
 
 export default function EditorToolbar({ editor, onImageUpload }: ToolbarProps) {
+  const [showLinkInput, setShowLinkInput] = useState(false);
+
   if (!editor) return null;
+
+  const handleLinkApply = (url: string) => {
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+    } else {
+      editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+    }
+    setShowLinkInput(false);
+  };
 
   const groups: ToolbarButton[][] = [
     // Text style
@@ -132,17 +145,6 @@ export default function EditorToolbar({ editor, onImageUpload }: ToolbarProps) {
         icon: "🖼",
         action: onImageUpload,
       },
-      {
-        label: "Link",
-        icon: "🔗",
-        action: () => {
-          const url = window.prompt("Enter URL:");
-          if (url) {
-            editor.chain().focus().setLink({ href: url }).run();
-          }
-        },
-        isActive: editor.isActive("link"),
-      },
     ],
     // Undo / Redo
     [
@@ -209,6 +211,47 @@ export default function EditorToolbar({ editor, onImageUpload }: ToolbarProps) {
           )}
         </div>
       ))}
+
+      <span
+        className="mx-1 h-5 w-px"
+        style={{ backgroundColor: "var(--color-border-muted)" }}
+      />
+
+      <div className="relative">
+        <button
+          type="button"
+          onClick={() => setShowLinkInput(!showLinkInput)}
+          title="Link"
+          className="flex h-8 min-w-8 items-center justify-center rounded px-1.5 text-xs font-semibold transition-colors duration-150 cursor-pointer"
+          style={{
+            fontFamily: "var(--font-sans)",
+            backgroundColor: (editor.isActive("link") || showLinkInput) ? "var(--color-accent-primary)" : "transparent",
+            color: (editor.isActive("link") || showLinkInput) ? "#ffffff" : "var(--color-text-secondary)",
+            border: "none",
+          }}
+          onMouseEnter={(e) => {
+            if (!(editor.isActive("link") || showLinkInput)) {
+              e.currentTarget.style.backgroundColor = "var(--color-bg-main)";
+              e.currentTarget.style.color = "var(--color-text-primary)";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!(editor.isActive("link") || showLinkInput)) {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "var(--color-text-secondary)";
+            }
+          }}
+        >
+          🔗
+        </button>
+        {showLinkInput && (
+          <LinkInput
+            initialValue={editor.getAttributes("link").href || ""}
+            onApply={handleLinkApply}
+            onCancel={() => setShowLinkInput(false)}
+          />
+        )}
+      </div>
     </div>
   );
 }
