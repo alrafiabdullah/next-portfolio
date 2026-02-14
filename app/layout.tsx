@@ -40,16 +40,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Abdullah Al Rafi", url: "https://abdullahalrafi.com" }],
   icons: {
-    icon: [
-      {
-        url: "/icon-light.svg",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark.svg",
-        media: "(prefers-color-scheme: dark)",
-      },
-    ],
+    icon: "/icon-light.svg",
   },
 };
 
