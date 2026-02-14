@@ -92,25 +92,6 @@ export const Navbar = () => {
             About
           </Link>
 
-          {/* <Link
-            href="/contact"
-            className="rounded-md px-3 py-1.5 text-sm font-medium no-underline transition-colors duration-200"
-            style={{
-              color: "var(--color-text-secondary)",
-              fontFamily: "var(--font-sans)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--color-bg-secondary)";
-              e.currentTarget.style.color = "var(--color-text-primary)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-              e.currentTarget.style.color = "var(--color-text-secondary)";
-            }}
-          >
-            Contact
-          </Link> */}
-
           <span
             className="mx-2 h-5 w-px"
             style={{ backgroundColor: "var(--color-border-muted)" }}
