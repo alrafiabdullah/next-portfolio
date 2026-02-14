@@ -4,19 +4,28 @@ export type BlogIsDraft = true | false;
 
 export interface BlogPayload {
   title: string;
+  cover_image?: string;
   content_html: string;
   content_json: object;
   is_draft: BlogIsDraft;
   tags: number[];
 }
 
+export interface UserResponse {
+  username: string;
+  first_name: string;
+  last_name: string;
+  bio: string;
+}
+
 export interface BlogResponse {
   id: string;
   title: string;
+  cover_image_url?: string;
   content_html: string;
   content_json: object;
   is_draft: BlogIsDraft;
-  written_by: string;
+  written_by: UserResponse;
   slug: string;
   tags: number[];
   published_at: string;
