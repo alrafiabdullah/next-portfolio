@@ -29,7 +29,13 @@ apiClient.interceptors.response.use(
     if (error.response) {
       if (error.response.status === 401) {
         const randomMessage = getRandomMessage();
-        toast.error(randomMessage);
+        toast.error(randomMessage, {
+          duration: 5000,
+          position: "top-center",
+          style: {
+            textAlign: "center",
+          },
+        });
       } else {
         console.error(`API Error [${error.response.status}]:`, error.response.data);
       }
