@@ -9,6 +9,7 @@ import { createBlog, type BlogIsDraft } from "@/app/services/blogService";
 
 export default function AddBlog() {
   const [title, setTitle] = useState("");
+  const [coverImage, setCoverImage] = useState<string>("");
   const [htmlContent, setHtmlContent] = useState("");
   const [jsonContent, setJsonContent] = useState<object>({});
   const [activeTab, setActiveTab] = useState<"write" | "preview">("write");
@@ -30,6 +31,7 @@ export default function AddBlog() {
     try {
       await createBlog({
         title,
+        cover_image: coverImage,
         content_html: htmlContent,
         content_json: jsonContent,
         is_draft: isDraft,
@@ -47,6 +49,17 @@ export default function AddBlog() {
     { key: "write" as const, label: "Write" },
     { key: "preview" as const, label: "Preview" },
   ];
+
+  const handleCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCoverImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-5 py-8">
@@ -69,6 +82,43 @@ export default function AddBlog() {
           e.currentTarget.style.borderColor = "var(--color-border-muted)";
         }}
       />
+
+      {/* Cover Image Input */}
+      <div className="mb-6">
+        <label
+          className="mb-2 block text-sm font-medium"
+          style={{ color: "var(--color-text-secondary)", fontFamily: "var(--font-sans)" }}
+        >
+          Cover Image
+        </label>
+        <div className="flex items-center gap-4">
+          <label className="cursor-pointer rounded-md border border-dashed px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-800" style={{ borderColor: 'var(--color-border-muted)' }}>
+            <span className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
+              {coverImage ? "Change Image" : "Upload Image"}
+            </span>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleCoverImageChange}
+              className="hidden"
+            />
+          </label>
+          {coverImage && (
+            <button
+              onClick={() => setCoverImage("")}
+              className="text-sm text-red-500 hover:text-red-600"
+            >
+              Remove
+            </button>
+          )}
+        </div>
+        {coverImage && (
+          <div className="mt-4 overflow-hidden rounded-lg border" style={{ borderColor: 'var(--color-border-muted)' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={coverImage} alt="Cover" className="h-48 w-full object-cover" />
+          </div>
+        )}
+      </div>
 
       {/* Tags */}
       <TagSelector selected={selectedTags} onChange={setSelectedTags} />

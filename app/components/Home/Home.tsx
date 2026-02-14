@@ -1,10 +1,10 @@
 "use client";
 
-import { type BlogResponse } from "@/app/services/blogService";
+import { type HomeBlogResponse } from "@/app/services/blogService";
 import BlogCard from "../BlogComponent/BlogCard";
 
 interface HomeProps {
-  initialBlogs: BlogResponse[];
+  initialBlogs: HomeBlogResponse[];
 }
 
 export const Home = ({ initialBlogs }: HomeProps) => {
@@ -22,7 +22,7 @@ export const Home = ({ initialBlogs }: HomeProps) => {
       {blogs.length === 0 ? (
         <p style={{ color: "var(--color-text-secondary)" }}>No blog posts yet. Check back soon!</p>
       ) : (
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap justify-center gap-4 sm:justify-start">
           {blogs.map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
           ))}
