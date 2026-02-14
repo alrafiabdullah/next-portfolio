@@ -444,6 +444,28 @@ button:active,
   margin: 0.75em 0;
 }
 
+.blog-editor-content.ProseMirror ul,
+.tiptap ul {
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+  padding-left: 1.5rem !important;
+  margin-left: 0 !important;
+}
+
+.blog-editor-content.ProseMirror ol,
+.tiptap ol {
+  list-style-type: decimal !important;
+  list-style-position: outside !important;
+  padding-left: 1.5rem !important;
+  margin-left: 0 !important;
+}
+
+.blog-editor-content.ProseMirror li p,
+.tiptap li p {
+  margin: 0 !important;
+  display: inline !important;
+}
+
 .blog-editor-content li {
   margin-bottom: 0.25em;
 }
@@ -624,6 +646,25 @@ button:active,
   margin: 0.75em 0;
 }
 
+.blog-preview-content ul {
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+  padding-left: 1.5rem !important;
+  margin-left: 0 !important;
+}
+
+.blog-preview-content ol {
+  list-style-type: decimal !important;
+  list-style-position: outside !important;
+  padding-left: 1.5rem !important;
+  margin-left: 0 !important;
+}
+
+.blog-preview-content li p {
+  margin: 0 !important;
+  display: inline !important;
+}
+
 .blog-preview-content li {
   margin-bottom: 0.25em;
 }
@@ -680,8 +721,8 @@ button:active,
   transform: translateX(-100%);
   background: linear-gradient(90deg,
       rgba(255, 255, 255, 0) 0,
-      rgba(255, 255, 255, 0.05) 20%,
-      rgba(255, 255, 255, 0.2) 60%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
       rgba(255, 255, 255, 0));
   animation: shimmer 2.5s infinite;
 }
