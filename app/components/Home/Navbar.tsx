@@ -192,17 +192,6 @@ export const Navbar = () => {
           >
             About
           </Link>
-          <Link
-            href="/contact"
-            onClick={() => setMobileOpen(false)}
-            className="nav-link rounded-md px-3 py-2 text-sm font-medium no-underline"
-            style={{
-              color: "var(--color-text-secondary)",
-              fontFamily: "var(--font-sans)",
-            }}
-          >
-            Contact
-          </Link>
         </div>
       </div>
     </nav>
