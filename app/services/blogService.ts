@@ -18,6 +18,18 @@ export interface UserResponse {
   bio: string;
 }
 
+export interface HomeBlogResponse {
+  id: string;
+  title: string;
+  slug: string;
+  cover_image_url: string;
+  published_at: string;
+  updated_at: string;
+  excerpt: string;
+  is_draft: BlogIsDraft;
+  tags: string[];
+}
+
 export interface BlogResponse {
   id: string;
   title: string;
