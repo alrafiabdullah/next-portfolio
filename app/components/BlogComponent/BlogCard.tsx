@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import type { HomeBlogResponse } from "@/app/services/blogService";
 
 interface BlogCardProps {
@@ -8,6 +9,7 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ blog }: BlogCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const date = new Date(blog.updated_at).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -28,12 +30,19 @@ export default function BlogCard({ blog }: BlogCardProps) {
       }}
     >
       {blog.cover_image_url && (
-        <div className="mb-4 overflow-hidden rounded-lg">
+        <div className="relative mb-4 h-48 overflow-hidden rounded-lg">
+          {!imageLoaded && (
+            <div className="absolute inset-0 z-10 animate-shimmer rounded-lg" />
+          )}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={blog.cover_image_url}
             alt={blog.title}
-            className="h-48 w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+            className={`h-48 w-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${imageLoaded ? "opacity-100" : "absolute inset-0 opacity-0"
+              }`}
+            onLoad={() => setImageLoaded(true)}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       )}
