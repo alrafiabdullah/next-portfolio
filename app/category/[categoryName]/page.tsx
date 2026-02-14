@@ -1,6 +1,6 @@
 
 import { notFound } from "next/navigation";
-import { getTags, getBlogsByTag } from "@/app/services/tagService";
+import { getBlogsByTag } from "@/app/services/tagService";
 import BlogCard from "@/app/components/BlogComponent/BlogCard";
 
 interface CategoryPageProps {
