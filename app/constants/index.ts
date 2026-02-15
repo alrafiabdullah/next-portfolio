@@ -1,4 +1,6 @@
-export const WITTY_401_MESSAGES = [
+import toast from "react-hot-toast";
+
+const WITTY_401_MESSAGES = [
     "I'm sorry, I don't think we've met formally. F*** off! 🤝",
     "My security system says you're a stranger. Want to change that? 🚪",
     "I'd love to let you in, but I need to know it's really you. 🕵️‍♂️",
@@ -19,7 +21,21 @@ export const WITTY_401_MESSAGES = [
     "Wait, who are you again? My server is having an identity crisis. 🎭",
 ];
 
-export const getRandomMessage = () => {
+const getRandomMessage = () => {
     const randomIndex = Math.floor(Math.random() * WITTY_401_MESSAGES.length);
     return WITTY_401_MESSAGES[randomIndex];
+}
+
+export const getBlogToken = () => {
+    return localStorage.getItem("blogToken");
+}
+
+export const showTokenErrToastMessage = () => {
+    toast.error(getRandomMessage(), {
+        duration: 5000,
+        position: "top-center",
+        style: {
+            textAlign: "center",
+        }
+    });
 }

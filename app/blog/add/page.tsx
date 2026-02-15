@@ -6,6 +6,7 @@ import BlogEditor from "@/app/components/Editor/BlogEditor";
 import BlogPreview from "@/app/components/Editor/BlogPreview";
 import TagSelector from "@/app/components/Editor/TagSelector";
 import { createBlog, type BlogIsDraft } from "@/app/services/blogService";
+import { getBlogToken, showTokenErrToastMessage } from "@/app/constants";
 
 export default function AddBlog() {
   const [title, setTitle] = useState("");
@@ -29,6 +30,11 @@ export default function AddBlog() {
 
     if (!coverImage) {
       toast.error("Please upload a cover image.");
+      return;
+    }
+
+    if (!getBlogToken()) {
+      showTokenErrToastMessage();
       return;
     }
 

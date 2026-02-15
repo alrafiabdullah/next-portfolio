@@ -1,4 +1,5 @@
 import apiClient from "@/app/lib/apiClient";
+import { getBlogToken } from "../constants";
 
 export type BlogIsDraft = true | false;
 
@@ -47,7 +48,7 @@ export interface BlogResponse {
 export async function createBlog(payload: BlogPayload): Promise<BlogResponse> {
   const body = { ...payload, written_by: "abdullah" }; // Hardcoded for now
   // Add Authorization header for this endpoint
-  apiClient.defaults.headers.common["Authorization"] = `Token ${localStorage.getItem("blogToken")}`;
+  apiClient.defaults.headers.common["Authorization"] = `Token ${getBlogToken()}`;
   const { data } = await apiClient.post<BlogResponse>("/blog/", body);
   return data;
 }
