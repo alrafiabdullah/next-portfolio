@@ -13,6 +13,13 @@ const apiClient = axios.create({
 // Request interceptor
 apiClient.interceptors.request.use(
   (config) => {
+    // Forward `ti` query param from the current page URL to every API call
+    if (typeof window !== "undefined") {
+      const ti = new URLSearchParams(window.location.search).get("ti");
+      if (ti) {
+        config.params = { ...config.params, ti };
+      }
+    }
     return config;
   },
   (error) => Promise.reject(error),
@@ -27,12 +34,12 @@ apiClient.interceptors.response.use(
       if (error.response.status === 401) {
         showTokenErrToastMessage();
       } else {
-        console.error(`API Error [${error.response.status}]:`, error.response.data);
+        // console.error(`API Error [${error.response.status}]:`, error.response.data);
       }
     } else if (error.request) {
-      console.error("No response received:", error.request);
+      // console.error("No response received:", error.request);
     } else {
-      console.error("Request error:", error.message);
+      // console.error("Request error:", error.message);
     }
     return Promise.reject(error);
   },
